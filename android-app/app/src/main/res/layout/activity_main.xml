@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pad_background"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="STRATAGEM PAD"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCtrlHold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnCtrlHold"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:background="@drawable/btn_ctrl"
+        android:src="@drawable/ic_skull"
+        android:scaleType="fitCenter"
+        android:padding="12dp"
+        android:elevation="8dp"
+        android:contentDescription="Toggle Left Ctrl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- D-pad container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dpad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_pad"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/tvStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
+
+        <!-- Up arrow at top (keyboard arrow key layout) -->
+        <ImageButton
+            android:id="@+id/btnUp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/arrow_up"
+            android:background="@drawable/btn_arrow"
+            android:scaleType="fitCenter"
+            android:contentDescription="Up"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.67"
+            app:layout_constraintHeight_percent="0.47" />
+
+        <!-- Bottom row: Left at left edge, Down centered, Right at right edge -->
+        <ImageButton
+            android:id="@+id/btnLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/arrow_left"
+            android:background="@drawable/btn_arrow"
+            android:scaleType="fitCenter"
+            android:contentDescription="Left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDown"
+            app:layout_constraintTop_toBottomOf="@id/btnUp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.33"
+            app:layout_constraintHeight_percent="0.47" />
+
+        <ImageButton
+            android:id="@+id/btnDown"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/arrow_down"
+            android:background="@drawable/btn_arrow"
+            android:scaleType="fitCenter"
+            android:contentDescription="Down"
+            app:layout_constraintStart_toEndOf="@id/btnLeft"
+            app:layout_constraintEnd_toStartOf="@id/btnRight"
+            app:layout_constraintTop_toBottomOf="@id/btnUp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.34"
+            app:layout_constraintHeight_percent="0.47" />
+
+        <ImageButton
+            android:id="@+id/btnRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/arrow_right"
+            android:background="@drawable/btn_arrow"
+            android:scaleType="fitCenter"
+            android:contentDescription="Right"
+            app:layout_constraintStart_toEndOf="@id/btnDown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnUp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.33"
+            app:layout_constraintHeight_percent="0.47" />
+
+        <!-- Center "dead zone" like the screenshot -->
+        <View
+            android:id="@+id/centerBlock"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/pad_center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.15"
+            app:layout_constraintHeight_percent="0.15" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Status: idle"
+        android:textColor="@color/pad_text_muted"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

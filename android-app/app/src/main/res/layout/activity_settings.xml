@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pad_background"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:tint="@android:color/white"
+        android:contentDescription="Close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSettingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnClose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <TextView
+        android:id="@+id/tvHostLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PC Host (IP or name)"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/tvSettingsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:id="@+id/etHost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/pad_text_muted"
+        android:hint="192.168.x.x"
+        app:layout_constraintTop_toBottomOf="@id/tvHostLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvPortLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Port"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/etHost"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/etPort"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/pad_text_muted"
+        android:hint="50555"
+        app:layout_constraintTop_toBottomOf="@id/tvPortLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btnScanQr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Scan QR to Sync"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/etPort"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/tvHapticLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Haptic strength"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/btnScanQr"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchHapticEnabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable haptic feedback"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/tvHapticLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <SeekBar
+        android:id="@+id/sbHaptic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="3"
+        app:layout_constraintTop_toBottomOf="@id/switchHapticEnabled"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvSoundLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrow button sound (tap to preview)"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/sbHaptic"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <ScrollView
+        android:id="@+id/svSoundList"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="#33000000"
+        app:layout_constraintTop_toBottomOf="@id/tvSoundLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:id="@+id/llSoundList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/svSoundList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

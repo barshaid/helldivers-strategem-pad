@@ -4,6 +4,7 @@ import json
 import sys
 import ctypes
 from ctypes import wintypes
+import time
 
 # Windows API constants and functions for sending keys
 VK_CONTROL = 0x11
@@ -23,6 +24,14 @@ KEY_MAP = {
     "s": VK_S,
     "d": VK_D,
     "left ctrl": VK_CONTROL,
+}
+
+# Map logical directions to key names
+DIRECTION_MAP = {
+    "up": "w",
+    "down": "s",
+    "left": "a",
+    "right": "d",
 }
 
 
@@ -81,6 +90,20 @@ def process_message(msg: dict):
     elif msg_type == "ctrl_up":
         print("[CTRL] Left Ctrl UP requested")
         set_left_ctrl(False)
+    elif msg_type in ("direction_down", "direction_up"):
+        direction = msg.get("direction")
+        key_name = DIRECTION_MAP.get(str(direction).lower())
+        if key_name is None:
+            print(f"[WARN] Unknown direction: {direction}")
+            return
+        vk_code = KEY_MAP.get(key_name)
+        if vk_code is None:
+            print(f"[WARN] No VK mapping for key: {key_name}")
+            return
+        is_down = msg_type == "direction_down"
+        state = "DOWN" if is_down else "UP"
+        print(f"[DIR] {direction} {state} (key {key_name})")
+        send_key(vk_code, is_down)
     else:
         print(f"[INFO] Unknown message type: {msg_type}, content: {msg}")
 
@@ -101,8 +124,7 @@ def send_sequence(keys):
             continue
         print(f"[KEY] {key}")
         send_key(vk_code, True)
-        import time
-        time.sleep(0.01)  # Small delay between press and release
+        time.sleep(0.05)  # Slight delay between press and release
         send_key(vk_code, False)
 
 

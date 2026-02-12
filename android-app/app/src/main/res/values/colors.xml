@@ -3,9 +3,9 @@
     <color name="pad_background">#050609</color>
     <color name="pad_center">#101218</color>
     <color name="pad_arrow">#37C5FF</color>
-    <color name="pad_arrow_pressed">#1AA4DA</color>
+    <color name="pad_arrow_pressed">#D6FF3A</color>
     <color name="pad_ctrl">#D6FF3A</color>
-    <color name="pad_ctrl_pressed">#B7E930</color>
+    <color name="pad_ctrl_pressed">#FF4444</color>
     <color name="pad_text_dark">#050609</color>
     <color name="pad_arrow_white">#FFFFFF</color>
     <color name="pad_text_muted">#A9B0BB</color>

@@ -22,6 +22,8 @@ The easiest way to get started is using the files in the `final/` folder:
    - You can minimize it to the system tray (only one instance can run at a time)
    - X button closes with confirmation, minimize button (_) minimizes to tray
 
+   ![PC Helper GUI](docs/images/pc-helper-gui.png)
+
 2. **Install the Android app**: Copy `HelldiversStrategemPad.apk` to your phone and install it
    - Enable "Install from unknown sources" if needed
 
@@ -40,6 +42,9 @@ The easiest way to get started is using the files in the `final/` folder:
 ## Features
 
 ### Android App
+
+![Android App Main Screen](docs/images/android-main.png)
+
 - **D-pad layout**: Arrow buttons arranged like keyboard arrows (inverted T-shape)
 - **Arrow buttons**: Turn yellow when held, send WASD keys to PC
 - **Left Ctrl toggle**: Yellow skull button toggles Left Ctrl on/off
@@ -128,6 +133,8 @@ To build the executables yourself:
 ## Settings (Android App)
 
 Access settings via the gear icon (top-left):
+
+![Android App Settings](docs/images/android-settings.png)
 
 - **PC Host**: Your PC's LAN IP address
 - **Port**: Server port (default: 50555)

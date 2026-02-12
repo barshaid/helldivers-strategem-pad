@@ -1,3 +1,5 @@
+obviusly i used corsair for this, don't judge me :(
+
 # Helldivers 2 Strategem Pad
 
 A wireless input pad for Helldivers 2 that lets you control strategems from your Android phone.

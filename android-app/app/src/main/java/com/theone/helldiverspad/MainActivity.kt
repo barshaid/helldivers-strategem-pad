@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity() {
         statusView = findViewById(R.id.tvStatus)
         overlayStrategemsOff = findViewById(R.id.overlayStrategemsOff)
 
-        // Load host/port/haptics/sound from preferences (fallback to previous default IP if present)
+        // Load host/port/haptics/sound from preferences
         val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
-        host = prefs.getString(KEY_HOST, "192.168.1.158") ?: "192.168.1.158"
+        host = prefs.getString(KEY_HOST, "") ?: ""
         port = prefs.getInt(KEY_PORT, DEFAULT_PORT)
         hapticStrength = prefs.getInt(KEY_HAPTIC, 2)
         hapticEnabled = prefs.getBoolean(KEY_HAPTIC_ENABLED, true)
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         // Reload preferences in case they were changed in settings
         val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
-        host = prefs.getString(KEY_HOST, "192.168.1.158") ?: "192.168.1.158"
+        host = prefs.getString(KEY_HOST, "") ?: ""
         port = prefs.getInt(KEY_PORT, DEFAULT_PORT)
         hapticStrength = prefs.getInt(KEY_HAPTIC, 2)
         hapticEnabled = prefs.getBoolean(KEY_HAPTIC_ENABLED, true)

@@ -53,8 +53,8 @@ pc-helper/dist/
 pc-helper/*.spec
 pc-helper/__pycache__/
 
-# Final release folder (optional - comment out if you want to include it)
-final/
+# Final release folder - now tracked in git
+# final/
 
 # OS
 .DS_Store

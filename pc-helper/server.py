@@ -1,9 +1,7 @@
 import socket
 import threading
 import json
-import sys
 import ctypes
-from ctypes import wintypes
 import time
 
 # Windows API constants and functions for sending keys
@@ -68,15 +66,16 @@ def handle_client(conn: socket.socket, addr):
 
 def process_message(msg: dict):
     """
-    Expected format from Android app (example):
-    {
-        "type": "strategem",
-        "name": "orbital_precision",
-        "sequence": ["w", "s", "d", "a"]
-    }
+    Process messages from Android app.
+    Supported message types:
+    - "toggle_left_ctrl": Toggle Left Ctrl key
+    - "direction_down": Hold a direction key (up/down/left/right)
+    - "direction_up": Release a direction key
+    - "strategem": Send a sequence of keys (used by test_client.py for testing)
     """
     msg_type = msg.get("type")
     if msg_type == "strategem":
+        # Legacy/test support - not used by Android app but useful for testing
         name = msg.get("name", "unknown")
         sequence = msg.get("sequence", [])
         print(f"[STRATEGEM] {name}: {sequence}")
@@ -84,12 +83,6 @@ def process_message(msg: dict):
     elif msg_type == "toggle_left_ctrl":
         print("[TOGGLE] Left Ctrl requested")
         toggle_left_ctrl()
-    elif msg_type == "ctrl_down":
-        print("[CTRL] Left Ctrl DOWN requested")
-        set_left_ctrl(True)
-    elif msg_type == "ctrl_up":
-        print("[CTRL] Left Ctrl UP requested")
-        set_left_ctrl(False)
     elif msg_type in ("direction_down", "direction_up"):
         direction = msg.get("direction")
         key_name = DIRECTION_MAP.get(str(direction).lower())
